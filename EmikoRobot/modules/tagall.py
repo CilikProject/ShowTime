@@ -22,15 +22,6 @@ async def mentionall(event):
     is_admin = False
     try:
         partici_ = await Client(GetParticipantRequest(event.chat_id, event.sender_id))
-    except UserNotParticipantError:
-        is_admin = False
-    else:
-        if isinstance(
-            partici_.participant, (ChannelParticipantAdmin, ChannelParticipantCreator)
-        ):
-            is_admin = True
-    if not is_admin:
-        return await event.respond("Only admins can mention all!")
 
     if event.pattern_match.group(1) and event.is_reply:
         return await event.respond("Give me one argument!")
