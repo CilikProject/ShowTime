@@ -16,13 +16,6 @@ spam_chats = []
 @Client.on(events.NewMessage(pattern="^/all ?(.*)"))
 async def mentionall(event):
     chat_id = event.chat_id
-    if event.is_private:
-        return await event.respond("This command can be use in groups and channels!")
-
-    is_admin = False
-    try:
-        partici_ = await Client(GetParticipantRequest(event.chat_id, event.sender_id))
-
     if event.pattern_match.group(1) and event.is_reply:
         return await event.respond("Give me one argument!")
     elif event.pattern_match.group(1):
